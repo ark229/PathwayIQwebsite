@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — PathwayIQ</title>
+  <meta name="description" content="PathwayIQ Privacy Policy. Learn how we collect, use, and protect your information." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:       #0d1117;
+      --bg2:      #111820;
+      --cyan:     #2dd4f0;
+      --cyan-dim: #1aa8c2;
+      --cyan-glow:#2dd4f030;
+      --white:    #f0f6fc;
+      --muted:    #7d8fa8;
+      --card:     #161f2c;
+      --border:   #1e2d3d;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 2rem;
+      background: rgba(13,17,23,0.95);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      text-decoration: none;
+    }
+
+    .nav-logo-icon {
+      width: 36px; height: 36px;
+      background: var(--cyan);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--bg);
+    }
+
+    .nav-logo-text {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--white);
+    }
+
+    .nav-back {
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: color 0.2s;
+    }
+
+    .nav-back:hover { color: var(--cyan); }
+
+    /* PAGE HEADER */
+    .page-header {
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+      padding: 3.5rem 2rem 2.5rem;
+      text-align: center;
+    }
+
+    .page-header-label {
+      display: inline-block;
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--cyan);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.8rem;
+      border-radius: 100px;
+      margin-bottom: 1rem;
+    }
+
+    .page-header h1 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      margin-bottom: 0.7rem;
+    }
+
+    .page-header-meta {
+      color: var(--muted);
+      font-size: 0.88rem;
+      font-weight: 300;
+    }
+
+    .page-header-meta strong {
+      color: var(--white);
+      font-weight: 500;
+    }
+
+    /* TOC */
+    .toc-wrapper {
+      max-width: 760px;
+      margin: 2.5rem auto 0;
+      padding: 0 1.5rem;
+    }
+
+    .toc {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.4rem 1.8rem;
+    }
+
+    .toc-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      font-size: 0.88rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+
+    .toc ol {
+      padding-left: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .toc a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    .toc a:hover { color: var(--cyan); }
+
+    /* CONTENT */
+    .content {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 5rem;
+    }
+
+    .policy-section {
+      margin-bottom: 3rem;
+      scroll-margin-top: 5rem;
+    }
+
+    .policy-section h2 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: var(--white);
+      margin-bottom: 1rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .policy-section h2 .num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px; height: 28px;
+      background: var(--cyan-glow);
+      border: 1px solid var(--cyan-dim);
+      border-radius: 8px;
+      font-size: 0.8rem;
+      color: var(--cyan);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .policy-section h3 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--white);
+      margin: 1.4rem 0 0.6rem;
+    }
+
+    .policy-section p {
+      color: var(--muted);
+      font-weight: 300;
+      margin-bottom: 0.8rem;
+    }
+
+    .policy-section ul, .policy-section ol {
+      padding-left: 1.4rem;
+      color: var(--muted);
+      font-weight: 300;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .policy-section li { font-size: 0.95rem; line-height: 1.65; }
+
+    .policy-section a { color: var(--cyan); text-decoration: none; }
+    .policy-section a:hover { text-decoration: underline; }
+
+    .callout {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--cyan);
+      border-radius: 0 10px 10px 0;
+      padding: 1rem 1.2rem;
+      margin: 1rem 0;
+    }
+
+    .callout p { color: var(--white); font-size: 0.9rem; margin: 0; }
+
+    .providers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.75rem;
+      margin: 1rem 0;
+    }
+
+    .provider-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.9rem 1rem;
+      font-size: 0.88rem;
+    }
+
+    .provider-name {
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.2rem;
+    }
+
+    .provider-role {
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 300;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    footer a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: var(--cyan); }
+    .footer-links { display: flex; gap: 1.4rem; flex-wrap: wrap; }
+
+    @media (max-width: 600px) {
+      nav { padding: 1rem 1.2rem; }
+      footer { flex-direction: column; align-items: flex-start; }
+    }
+
+    /* Contact modal */
+    .piq-contact-overlay {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.75);
+      backdrop-filter: blur(6px);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+    .piq-contact-overlay.open { display: flex; }
+    .piq-contact-modal {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      width: 100%;
+      max-width: 460px;
+      margin: 1rem;
+      position: relative;
+      animation: fadeUp 0.2s ease;
+    }
+    .piq-contact-modal h2 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.05em;
+      color: var(--cyan);
+      margin: 0 0 0.3rem 0;
+    }
+    .piq-contact-modal > p {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin: 0 0 1.4rem 0;
+      font-weight: 300;
+    }
+    .piq-modal-close {
+      position: absolute; top: 1rem; right: 1rem;
+      background: none; border: none; color: var(--muted);
+      cursor: pointer; font-size: 1.3rem; line-height: 1;
+      padding: 0.2rem 0.4rem; border-radius: 4px; transition: color 0.2s;
+    }
+    .piq-modal-close:hover { color: var(--white); }
+    .piq-form-group { margin-bottom: 1rem; }
+    .piq-form-group label {
+      display: block;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+    .piq-form-group select,
+    .piq-form-group input,
+    .piq-form-group textarea {
+      width: 100%;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem;
+      padding: 0.65rem 0.9rem;
+      box-sizing: border-box;
+      transition: border-color 0.2s;
+      outline: none;
+    }
+    .piq-form-group select:focus,
+    .piq-form-group input:focus,
+    .piq-form-group textarea:focus { border-color: var(--cyan); }
+    .piq-form-group textarea { resize: vertical; min-height: 90px; }
+    .piq-form-group select option { background: var(--card); }
+    .piq-submit {
+      width: 100%;
+      background: var(--cyan);
+      color: var(--bg);
+      border: none;
+      border-radius: 8px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.8rem;
+      cursor: pointer;
+      margin-top: 0.5rem;
+      transition: opacity 0.2s;
+    }
+    .piq-submit:hover { opacity: 0.85; }
+    .piq-success {
+      display: none; text-align: center; padding: 1.5rem 0;
+    }
+    .piq-success svg { color: #10b981; margin-bottom: 0.75rem; }
+    .piq-success h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.9rem;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--white); margin: 0 0 0.4rem 0;
+    }
+    .piq-success p { font-size: 0.82rem; color: var(--muted); margin: 0; font-weight: 300; }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .piq-contact-btn {
+      display: inline-block;
+      margin-top: 1rem;
+      background: var(--cyan);
+      color: var(--bg);
+      border: none;
+      border-radius: 8px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.75rem 1.5rem;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .piq-contact-btn:hover { opacity: 0.85; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="nav-logo">
+      <div class="nav-logo-icon">P</div>
+      <span class="nav-logo-text">PathwayIQ</span>
+    </a>
+    <a href="/" class="nav-back">
+      ← Back to PathwayIQ
+    </a>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="page-header-label">Legal</div>
+    <h1>Privacy Policy</h1>
+    <p class="page-header-meta">
+      <strong>PathwayIQ</strong> &nbsp;·&nbsp; by TechLearn Resources | Knight Development<br>
+      Effective date: <strong>May 26, 2026</strong>
+    </p>
+  </div>
+
+  <!-- TOC -->
+  <div class="toc-wrapper">
+    <div class="toc">
+      <div class="toc-title">Table of Contents</div>
+      <ol>
+        <li><a href="#s1">Information We Collect</a></li>
+        <li><a href="#s2">How We Use Your Information</a></li>
+        <li><a href="#s3">Data Storage and Cloud Sync</a></li>
+        <li><a href="#s4">Data Sharing</a></li>
+        <li><a href="#s5">Children's Privacy</a></li>
+        <li><a href="#s6">Your Rights and Choices</a></li>
+        <li><a href="#s7">Data Security</a></li>
+        <li><a href="#s8">Third-Party Links</a></li>
+        <li><a href="#s9">Changes to This Policy</a></li>
+        <li><a href="#s10">Contact Us</a></li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <p style="color:var(--muted); font-weight:300; margin-bottom:2rem; font-size:0.95rem;">
+      PathwayIQ ("the app") is a free mobile application developed by Knight Development under the TechLearn Resources brand. This Privacy Policy explains how we collect, use, and protect information when you use PathwayIQ on Android or any other platform. By using PathwayIQ, you agree to the practices described in this policy. If you do not agree, please discontinue use of the app.
+    </p>
+
+    <!-- Section 1 -->
+    <div class="policy-section" id="s1">
+      <h2><span class="num">1</span> Information We Collect</h2>
+
+      <h3>1.1 Information You Provide</h3>
+      <p>PathwayIQ collects the following information that you voluntarily enter within the app:</p>
+      <ul>
+        <li><strong style="color:var(--white)">Your name</strong> — entered optionally when you earn a certificate of completion. Used only to personalize your certificate.</li>
+        <li><strong style="color:var(--white)">Experience level, target career track, and learning goal</strong> — selected during onboarding to personalize your roadmap.</li>
+      </ul>
+
+      <h3>1.2 Information Stored Locally</h3>
+      <p>All user-provided data and progress data are stored locally on your device using AsyncStorage. This includes:</p>
+      <ul>
+        <li>Your selected career track and onboarding preferences</li>
+        <li>Step completion progress</li>
+        <li>Your certificate name</li>
+      </ul>
+      <div class="callout"><p>This data does not leave your device unless you use PathwayIQ Pro features that require cloud sync (see Section 3).</p></div>
+
+      <h3>1.3 Analytics Data (Firebase)</h3>
+      <p>PathwayIQ uses Google Firebase Analytics to collect anonymous usage data, including:</p>
+      <ul>
+        <li>App opens and session duration</li>
+        <li>Screens viewed and features used</li>
+        <li>Device type, operating system version, and country</li>
+      </ul>
+      <p>This data is aggregated and anonymous. It does not identify you personally and is used solely to improve the app experience.</p>
+
+      <h3>1.4 Advertising Data (Google AdMob)</h3>
+      <p>The free version of PathwayIQ displays ads served by Google AdMob. AdMob may collect:</p>
+      <ul>
+        <li>Advertising identifiers (e.g., Android Advertising ID)</li>
+        <li>IP address and approximate location</li>
+        <li>Interaction data with ads</li>
+      </ul>
+      <p>Ad data collection is governed by <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>. PathwayIQ Pro subscribers are not shown ads.</p>
+
+      <h3>1.5 Subscription Data (RevenueCat)</h3>
+      <p>If you subscribe to PathwayIQ Pro, your subscription is managed by RevenueCat. RevenueCat may collect:</p>
+      <ul>
+        <li>Purchase history and subscription status</li>
+        <li>Device identifiers for license validation</li>
+      </ul>
+      <p>RevenueCat's privacy practices are governed by its <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">Privacy Policy</a>.</p>
+
+      <h3>1.6 Account Data (Firebase Auth)</h3>
+      <p>PathwayIQ Pro accounts use Google Firebase Authentication. If you create an account, Firebase stores:</p>
+      <ul>
+        <li>Email address or Google account identifier</li>
+        <li>Authentication tokens</li>
+      </ul>
+      <p>Firebase Auth data is governed by <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>.</p>
+    </div>
+
+    <!-- Section 2 -->
+    <div class="policy-section" id="s2">
+      <h2><span class="num">2</span> How We Use Your Information</h2>
+      <p>We use the information collected for the following purposes:</p>
+      <ul>
+        <li>To personalize your learning roadmap and in-app experience</li>
+        <li>To display your name on certificates of completion</li>
+        <li>To track and display your step progress within the app</li>
+        <li>To understand how users interact with the app and improve its features</li>
+        <li>To serve contextually relevant advertisements (free tier only)</li>
+        <li>To validate and manage Pro subscriptions</li>
+      </ul>
+      <div class="callout"><p>We do not use your information for any purpose not listed above.</p></div>
+    </div>
+
+    <!-- Section 3 -->
+    <div class="policy-section" id="s3">
+      <h2><span class="num">3</span> Data Storage and Cloud Sync</h2>
+      <p><strong style="color:var(--white)">Free tier users:</strong> All data is stored exclusively on your device. Uninstalling the app will permanently delete your local progress and settings.</p>
+      <p><strong style="color:var(--white)">Pro tier users:</strong> If you enable cloud sync, your progress data is stored in Google Firestore and associated with your account. This allows your progress to sync across multiple devices. You may delete your cloud data by deleting your account (see Section 6).</p>
+    </div>
+
+    <!-- Section 4 -->
+    <div class="policy-section" id="s4">
+      <h2><span class="num">4</span> Data Sharing</h2>
+      <p>We do not sell, trade, or rent your personal information to third parties.</p>
+      <p>We share data only with the following service providers, strictly for the purposes described in this policy:</p>
+
+      <div class="providers-grid">
+        <div class="provider-card">
+          <div class="provider-name">Google Firebase</div>
+          <div class="provider-role">Analytics, authentication, cloud storage</div>
+        </div>
+        <div class="provider-card">
+          <div class="provider-name">Google AdMob</div>
+          <div class="provider-role">Advertising — free tier only</div>
+        </div>
+        <div class="provider-card">
+          <div class="provider-name">RevenueCat</div>
+          <div class="provider-role">Subscription management — Pro tier only</div>
+        </div>
+      </div>
+
+      <p>All third-party providers are contractually required to protect your data and may not use it for their own marketing purposes.</p>
+    </div>
+
+    <!-- Section 5 -->
+    <div class="policy-section" id="s5">
+      <h2><span class="num">5</span> Children's Privacy</h2>
+      <p>PathwayIQ is not directed to children under the age of 13. We do not knowingly collect personal information from children under 13. If you believe a child under 13 has provided us with personal information, please contact us at the address below, and we will delete it promptly.</p>
+    </div>
+
+    <!-- Section 6 -->
+    <div class="policy-section" id="s6">
+      <h2><span class="num">6</span> Your Rights and Choices</h2>
+
+      <h3>6.1 Access and Correction</h3>
+      <p>You can view and update your profile information (name, experience level, career track, and goal) directly within the app at any time via the Profile screen.</p>
+
+      <h3>6.2 Deletion</h3>
+      <p><strong style="color:var(--white)">To delete your local data:</strong> Go to Profile &gt; Settings &gt; Reset app. This clears all locally stored progress and preferences.</p>
+      <p><strong style="color:var(--white)">To delete your cloud data (Pro users):</strong> Contact us at the address below to request account and data deletion. We will process your request within 30 days.</p>
+
+      <h3>6.3 Opt Out of Analytics</h3>
+      <p>You can opt out of Firebase Analytics data collection through your device settings. On Android, go to Settings &gt; Google &gt; Ads and enable "Opt out of Ads Personalization."</p>
+
+      <h3>6.4 Advertising Preferences</h3>
+      <p>You can reset your advertising ID or opt out of personalized ads through your device's advertising settings.</p>
+    </div>
+
+    <!-- Section 7 -->
+    <div class="policy-section" id="s7">
+      <h2><span class="num">7</span> Data Security</h2>
+      <p>We implement reasonable technical and organizational measures to protect your information, including:</p>
+      <ul>
+        <li>Local data is stored using platform-standard secure storage (AsyncStorage)</li>
+        <li>Cloud data is protected by Firebase security rules and Google's infrastructure</li>
+        <li>Subscription data is handled by RevenueCat's PCI-compliant systems</li>
+      </ul>
+      <p>No method of transmission or storage is 100% secure. We cannot guarantee absolute security, but we take the protection of your data seriously.</p>
+    </div>
+
+    <!-- Section 8 -->
+    <div class="policy-section" id="s8">
+      <h2><span class="num">8</span> Third-Party Links</h2>
+      <p>PathwayIQ links to external learning resources on platforms including YouTube, Khan Academy, freeCodeCamp, IBM SkillsBuild, LearnFree, MIT OpenCourseWare, AWS Skill Builder, Microsoft Learn, and others. These links open in your device browser or the respective platform's app.</p>
+      <p>We are not responsible for the privacy practices of these external platforms. We encourage you to review their respective privacy policies before engaging with their content.</p>
+    </div>
+
+    <!-- Section 9 -->
+    <div class="policy-section" id="s9">
+      <h2><span class="num">9</span> Changes to This Policy</h2>
+      <p>We may update this Privacy Policy from time to time. When we do, we will update the effective date at the top of this document. For significant changes, we will provide notice within the app. Continued use of PathwayIQ after changes are posted constitutes your acceptance of the updated policy.</p>
+    </div>
+
+    <!-- Section 10 -->
+    <div class="policy-section" id="s10">
+      <h2><span class="num">10</span> Contact Us</h2>
+      <p>If you have questions, concerns, or requests regarding this Privacy Policy or your data, please reach out using the form below.</p>
+      <button class="piq-contact-btn" id="piqContactTrigger">Get in Touch ↗</button>
+      <p style="font-size:0.85rem; margin-top:1.2rem; font-style:italic;">This privacy policy applies to the PathwayIQ mobile application and does not govern the TechLearn Resources website (techlearnresources.com), which maintains a separate privacy policy.</p>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>
+      <strong style="color:var(--white)">PathwayIQ</strong> &nbsp;·&nbsp; by
+      <a href="https://techlearnresources.com" target="_blank" rel="noopener">TechLearn Resources</a>
+      &nbsp;/&nbsp; <a href="https://knightdevonline.com/" target="_blank" rel="noopener">Knight Development</a>
+    </div>
+    <div class="footer-links">
+      <a href="/" style="color:var(--cyan)">PathwayIQ</a>
+      <button id="piqContactTriggerFooter" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:0.82rem;font-family:inherit;padding:0;transition:color 0.2s;" onmouseover="this.style.color='var(--cyan)'" onmouseout="this.style.color='var(--muted)'">Contact</button>
+      <a href="https://techlearnresources.com" target="_blank" rel="noopener">TechLearn Resources</a>
+    </div>
+  </footer>
+
+  <!-- Netlify form (hidden, required for form detection) -->
+  <form name="pathwayiq-contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
+    <input type="hidden" name="form-name" value="pathwayiq-contact" />
+    <input name="bot-field" />
+    <input name="type" />
+    <textarea name="details"></textarea>
+    <input name="email" />
+  </form>
+
+  <!-- Contact modal -->
+  <div class="piq-contact-overlay" id="piqContactOverlay">
+    <div class="piq-contact-modal" role="dialog" aria-modal="true" aria-labelledby="piqContactTitle">
+      <button class="piq-modal-close" id="piqContactClose" aria-label="Close">&times;</button>
+      <div id="piqFormWrap">
+        <h2 id="piqContactTitle">Get in Touch</h2>
+        <p>Questions, feedback, or early access interest? We'd love to hear from you.</p>
+        <form name="pathwayiq-contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="piqContactForm">
+          <input type="hidden" name="form-name" value="pathwayiq-contact" />
+          <p style="display:none;"><input name="bot-field" /></p>
+          <div class="piq-form-group">
+            <label for="piqType">I want to...</label>
+            <select name="type" id="piqType" required>
+              <option value="" disabled selected>Select one...</option>
+              <option value="early-access">Request early access</option>
+              <option value="suggest">Suggest a learning path</option>
+              <option value="feedback">Share feedback</option>
+              <option value="question">Ask a question</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="piq-form-group">
+            <label for="piqDetails">Message</label>
+            <textarea name="details" id="piqDetails" placeholder="Tell us more..." required></textarea>
+          </div>
+          <div class="piq-form-group">
+            <label for="piqEmail">Your email</label>
+            <input type="email" name="email" id="piqEmail" placeholder="you@example.com" />
+          </div>
+          <button type="submit" class="piq-submit">Send Message</button>
+        </form>
+      </div>
+      <div class="piq-success" id="piqSuccess">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5"/>
+        </svg>
+        <h3>Message Sent!</h3>
+        <p>Thanks for reaching out. We'll be in touch soon.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const piqOverlay   = document.getElementById('piqContactOverlay');
+    const piqTrigger   = document.getElementById('piqContactTrigger');
+    const piqTriggerF  = document.getElementById('piqContactTriggerFooter');
+    const piqClose     = document.getElementById('piqContactClose');
+    const piqForm      = document.getElementById('piqContactForm');
+    const piqFormWrap  = document.getElementById('piqFormWrap');
+    const piqSuccess   = document.getElementById('piqSuccess');
+
+    const openModal = () => piqOverlay.classList.add('open');
+    piqTrigger.addEventListener('click', openModal);
+    piqTriggerF.addEventListener('click', openModal);
+    piqClose.addEventListener('click', () => piqOverlay.classList.remove('open'));
+    piqOverlay.addEventListener('click', (e) => { if (e.target === piqOverlay) piqOverlay.classList.remove('open'); });
+
+    piqForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = piqForm.querySelector('.piq-submit');
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+      try {
+        const data = new FormData(piqForm);
+        await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(data).toString() });
+        piqFormWrap.style.display = 'none';
+        piqSuccess.style.display = 'block';
+        setTimeout(() => {
+          piqOverlay.classList.remove('open');
+          setTimeout(() => { piqFormWrap.style.display = ''; piqSuccess.style.display = 'none'; btn.textContent = 'Send Message'; btn.disabled = false; piqForm.reset(); }, 300);
+        }, 2500);
+      } catch(err) {
+        btn.textContent = 'Send Message';
+        btn.disabled = false;
+        alert('Something went wrong. Please try again.');
+      }
+    });
+  </script>
+
+  <!-- Back to top button -->
+  <button id="backToTop" aria-label="Back to top" style="
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--cyan);
+    color: var(--bg);
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(45,212,240,0.3);
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    z-index: 999;
+    pointer-events: none;
+  ">↑</button>
+
+  <script>
+    const btt = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      const show = window.scrollY > 400;
+      btt.style.opacity = show ? '1' : '0';
+      btt.style.transform = show ? 'translateY(0)' : 'translateY(12px)';
+      btt.style.pointerEvents = show ? 'auto' : 'none';
+    });
+    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  </script>
+
+</body>
+</html>
