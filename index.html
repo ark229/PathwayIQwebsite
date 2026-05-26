@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PathwayIQ — Your Tech Career Roadmap</title>
+  <meta name="description" content="PathwayIQ gives you a personalized, step-by-step tech career roadmap — free on Android. Earn shareable certificates when you finish." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:       #0d1117;
+      --bg2:      #111820;
+      --cyan:     #2dd4f0;
+      --cyan-dim: #1aa8c2;
+      --cyan-glow:#2dd4f040;
+      --gold:     #f59e0b;
+      --gold-glow:#f59e0b30;
+      --white:    #f0f6fc;
+      --muted:    #7d8fa8;
+      --card:     #161f2c;
+      --border:   #1e2d3d;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    h1, h2, h3, h4, .feature-title, .section-title, .pricing-tier, .showcase-text h3, .cta-strip h2 { line-height: 1.4; overflow: visible; padding-bottom: 0.2em; }
+    * { -webkit-font-smoothing: antialiased; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 0; opacity: 0.5;
+    }
+
+
+    /* ── COMING SOON BANNER ── */
+    .coming-soon-bar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      background: linear-gradient(90deg, #f59e0b 0%, #fbbf24 50%, #f59e0b 100%);
+      background-size: 200% 100%;
+      animation: shimmer 3s linear infinite;
+      text-align: center;
+      padding: 0.55rem 1rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #0d1117;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+    }
+    .coming-soon-bar .csb-dot {
+      width: 7px; height: 7px;
+      background: #0d1117;
+      border-radius: 50%;
+      opacity: 0.4;
+      animation: pulse-dot 1.5s ease-in-out infinite;
+    }
+    .coming-soon-bar .csb-dot:nth-child(2) { animation-delay: 0.3s; }
+    .coming-soon-bar .csb-dot:nth-child(3) { animation-delay: 0.6s; }
+    @keyframes shimmer {
+      0%   { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 0.25; transform: scale(1); }
+      50%       { opacity: 0.8;  transform: scale(1.3); }
+    }
+    /* Push nav and content down to account for banner */
+    /* NAV */
+    nav {
+      position: fixed; top: 36px; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 2rem;
+      background: rgba(13,17,23,0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 0.65rem; text-decoration: none; }
+    .nav-logo-icon {
+      width: 36px; height: 36px; background: var(--cyan); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 1.1rem; color: var(--bg);
+    }
+    .nav-logo-text { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--white); }
+    .nav-links { display: flex; align-items: center; gap: 1.8rem; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--white); }
+    .btn-nav { background: var(--cyan); color: var(--bg) !important; padding: 0.45rem 1.1rem; border-radius: 8px; font-weight: 600 !important; }
+
+    /* HERO */
+    .hero {
+      position: relative; min-height: 100vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 6rem 1.5rem 4rem; padding-top: 101px; overflow-x: clip;
+    }
+    .hero::after {
+      content: ''; position: absolute; top: 20%; left: 50%; transform: translateX(-50%);
+      width: 700px; height: 500px;
+      background: radial-gradient(ellipse at center, var(--cyan-glow) 0%, transparent 70%);
+      pointer-events: none; z-index: 0;
+    }
+    .hero > * { position: relative; z-index: 1; }
+
+    .hero-eyebrow {
+      display: inline-block; background: var(--card); border: 1px solid var(--border);
+      color: var(--cyan); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; padding: 0.35rem 0.9rem; border-radius: 100px;
+      margin-bottom: 1.6rem; animation: fadeUp 0.6s ease both;
+    }
+    .hero-icon {
+      width: 88px; height: 88px; background: var(--cyan); border-radius: 22px;
+      display: flex; align-items: center; justify-content: center; margin: 0 auto 1.8rem;
+      box-shadow: 0 0 48px var(--cyan-glow), 0 0 96px var(--cyan-glow);
+      animation: fadeUp 0.6s 0.1s ease both;
+    }
+    .hero-icon span { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 2.4rem; color: var(--bg); }
+    h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800;
+      font-size: clamp(2.6rem, 7vw, 4.8rem); line-height: 1.3; letter-spacing: -0.02em;
+      animation: fadeUp 0.6s 0.2s ease both;
+    }
+    h1 .accent { color: var(--cyan); }
+    .hero-sub {
+      font-size: clamp(1rem, 2.5vw, 1.2rem); color: var(--muted); max-width: 520px;
+      margin: 1.2rem auto 2.6rem; font-weight: 300; animation: fadeUp 0.6s 0.3s ease both;
+    }
+    .hero-cta {
+      display: flex; flex-wrap: wrap; gap: 0.85rem; justify-content: center;
+      animation: fadeUp 0.6s 0.4s ease both;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--cyan); color: var(--bg); padding: 0.85rem 1.8rem;
+      border-radius: 12px; font-weight: 700; font-size: 1rem; text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s; box-shadow: 0 0 24px var(--cyan-glow);
+    }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-2px); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: transparent; color: var(--white); border: 1px solid var(--border);
+      padding: 0.85rem 1.8rem; border-radius: 12px; font-weight: 500; font-size: 1rem;
+      text-decoration: none; transition: border-color 0.2s, color 0.2s, transform 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--cyan); color: var(--cyan); transform: translateY(-2px); }
+    .hero-badge { margin-top: 1.6rem; font-size: 0.82rem; color: var(--muted); animation: fadeUp 0.6s 0.5s ease both; }
+    .hero-badge span { color: var(--cyan); font-weight: 600; }
+
+    .scroll-hint {
+      position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+      color: var(--muted); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+      animation: bounce 2s infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* SHARED LAYOUT */
+    section { position: relative; z-index: 1; }
+    .section-label { text-align: center; color: var(--cyan); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 0.8rem; }
+    .section-title { text-align: center; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: clamp(1.8rem, 4vw, 2.6rem); line-height: 1.3; margin-bottom: 1rem; }
+    .section-sub { text-align: center; color: var(--muted); max-width: 480px; margin: 0 auto 3.5rem; font-weight: 300; }
+
+    /* FEATURES */
+    .features { padding: 6rem 1.5rem; max-width: 1100px; margin: 0 auto; }
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.4rem; }
+    .feature-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+      padding: 1.8rem; transition: border-color 0.25s, transform 0.25s; overflow: visible;
+    }
+    .feature-card:hover { border-color: var(--cyan-dim); transform: translateY(-4px); }
+    .feature-icon {
+      width: 44px; height: 44px; background: var(--cyan-glow); border: 1px solid var(--cyan-dim);
+      border-radius: 10px; display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.1rem; font-size: 1.3rem;
+    }
+    .feature-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; font-size: 1.05rem; margin-bottom: 0.5rem; line-height: 1.4; padding-bottom: 0.2rem; }
+    .feature-desc { color: var(--muted); font-size: 0.92rem; font-weight: 300; line-height: 1.65; }
+
+    /* ── SCREENSHOT SHOWCASE ── */
+    .showcase {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 6rem 1.5rem;
+    }
+    .showcase-inner { max-width: 1100px; margin: 0 auto; }
+
+    .showcase-panels {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      margin-top: 3rem;
+    }
+
+    /* certificate panel — left */
+    .showcase-panel { display: flex; flex-direction: column; gap: 1.6rem; }
+
+    .phone-frame {
+      position: relative;
+      max-width: 300px;
+      margin: 0 auto;
+      filter: drop-shadow(0 24px 48px rgba(0,0,0,0.5));
+    }
+
+    .phone-frame img {
+      width: 100%;
+      border-radius: 28px;
+      border: 2px solid var(--border);
+      display: block;
+    }
+
+    /* golden glow for certificate */
+    .phone-frame.gold-glow img {
+      box-shadow: 0 0 40px var(--gold-glow), 0 0 80px var(--gold-glow);
+      border-color: rgba(245,158,11,0.3);
+    }
+
+    /* cyan glow for pro tracks */
+    .phone-frame.cyan-glow img {
+      box-shadow: 0 0 40px var(--cyan-glow), 0 0 80px var(--cyan-glow);
+      border-color: var(--border);
+    }
+
+    .showcase-text {}
+    .showcase-text h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700;
+      font-size: clamp(1.4rem, 3vw, 2rem); margin-bottom: 0.8rem; line-height: 1.2;
+    }
+    .showcase-text p { color: var(--muted); font-weight: 300; margin-bottom: 1.2rem; line-height: 1.7; }
+
+    .pill-list { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+    .pill {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 100px; padding: 0.35rem 0.9rem;
+      font-size: 0.82rem; font-weight: 500; color: var(--muted);
+    }
+    .pill.highlight { border-color: var(--cyan); color: var(--cyan); background: var(--cyan-glow); }
+    .pill.gold      { border-color: var(--gold);  color: var(--gold);  background: var(--gold-glow); }
+
+    /* flip order on second panel */
+    .showcase-panels.reverse { }
+    .showcase-panels.reverse .showcase-text { order: -1; }
+
+    @media (max-width: 768px) {
+      .showcase-panels { grid-template-columns: 1fr; gap: 2.4rem; }
+      .showcase-panels.reverse .showcase-text { order: 0; }
+      .phone-frame { max-width: 260px; }
+    }
+
+    /* TRACKS */
+    .tracks-section {
+      padding: 6rem 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+    .tracks-inner { max-width: 1100px; margin: 0 auto; }
+    .tracks-grid { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; margin-top: 2.5rem; }
+    .track-pill {
+      background: var(--card); border: 1px solid var(--border); border-radius: 100px;
+      padding: 0.5rem 1.2rem; font-size: 0.88rem; font-weight: 500; color: var(--muted);
+      transition: all 0.2s; cursor: default;
+    }
+    .track-pill:hover, .track-pill.active { background: var(--cyan-glow); border-color: var(--cyan); color: var(--cyan); }
+    .track-pill.pro-pill { border-color: rgba(245,158,11,0.4); color: var(--gold); background: var(--gold-glow); }
+
+    .tracks-note {
+      text-align: center; margin-top: 1.8rem;
+      font-size: 0.85rem; color: var(--muted); font-weight: 300;
+    }
+    .tracks-note strong { color: var(--gold); }
+
+    /* PRICING */
+    .pricing-section { padding: 6rem 1.5rem; max-width: 900px; margin: 0 auto; }
+    .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; margin-top: 3rem; }
+    @media (max-width: 600px) { .pricing-grid { grid-template-columns: 1fr; } }
+    .pricing-card { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 2rem; }
+    .pricing-card.featured { border-color: var(--cyan); box-shadow: 0 0 40px var(--cyan-glow); }
+    .pricing-tier { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 0.4rem; }
+    .pricing-price { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 2.4rem; color: var(--cyan); margin-bottom: 0.2rem; }
+    .pricing-price sup { font-size: 1.1rem; vertical-align: super; }
+    .pricing-cadence { font-size: 0.82rem; color: var(--muted); margin-bottom: 1.5rem; }
+    .pricing-list { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+    .pricing-list li { display: flex; gap: 0.6rem; font-size: 0.9rem; color: var(--muted); font-weight: 300; }
+    .pricing-list li .check { color: var(--cyan); font-weight: 700; }
+    .pricing-list li .check-gold { color: var(--gold); font-weight: 700; }
+
+    /* CTA STRIP */
+    .cta-strip {
+      background: linear-gradient(135deg, var(--card) 0%, #0d1e2e 100%);
+      border-top: 1px solid var(--border);
+      padding: 5rem 1.5rem; text-align: center;
+    }
+    .cta-strip h2 { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: clamp(1.8rem, 4vw, 2.8rem); margin-bottom: 0.8rem; }
+    .cta-strip p { color: var(--muted); max-width: 420px; margin: 0 auto 2rem; font-weight: 300; }
+
+    /* FOOTER */
+    footer {
+      background: var(--bg); border-top: 1px solid var(--border);
+      padding: 2.2rem 2rem; display: flex; flex-wrap: wrap;
+      align-items: center; justify-content: space-between; gap: 1rem;
+      font-size: 0.82rem; color: var(--muted);
+    }
+    footer a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: var(--cyan); }
+    .footer-links { display: flex; gap: 1.4rem; flex-wrap: wrap; }
+
+
+    /* ── CONTACT MODAL ── */
+    .piq-contact-overlay {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.75);
+      backdrop-filter: blur(6px);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+    .piq-contact-overlay.open { display: flex; }
+    .piq-contact-modal {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      width: 100%;
+      max-width: 460px;
+      margin: 1rem;
+      position: relative;
+      animation: fadeUp 0.2s ease;
+    }
+    .piq-contact-modal h2 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.05em;
+      color: var(--cyan);
+      margin: 0 0 0.3rem 0;
+    }
+    .piq-contact-modal > p {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin: 0 0 1.4rem 0;
+      font-weight: 300;
+    }
+    .piq-modal-close {
+      position: absolute; top: 1rem; right: 1rem;
+      background: none; border: none; color: var(--muted);
+      cursor: pointer; font-size: 1.3rem; line-height: 1;
+      padding: 0.2rem 0.4rem; border-radius: 4px; transition: color 0.2s;
+    }
+    .piq-modal-close:hover { color: var(--white); }
+    .piq-form-group { margin-bottom: 1rem; }
+    .piq-form-group label {
+      display: block;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+    .piq-form-group select,
+    .piq-form-group input,
+    .piq-form-group textarea {
+      width: 100%;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem;
+      padding: 0.65rem 0.9rem;
+      box-sizing: border-box;
+      transition: border-color 0.2s;
+      outline: none;
+    }
+    .piq-form-group select:focus,
+    .piq-form-group input:focus,
+    .piq-form-group textarea:focus { border-color: var(--cyan); }
+    .piq-form-group textarea { resize: vertical; min-height: 90px; }
+    .piq-form-group select option { background: var(--card); }
+    .piq-submit {
+      width: 100%;
+      background: var(--cyan);
+      color: var(--bg);
+      border: none;
+      border-radius: 8px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.8rem;
+      cursor: pointer;
+      margin-top: 0.5rem;
+      transition: opacity 0.2s;
+    }
+    .piq-submit:hover { opacity: 0.85; }
+    .piq-success {
+      display: none; text-align: center; padding: 1.5rem 0;
+    }
+    .piq-success svg { color: #10b981; margin-bottom: 0.75rem; }
+    .piq-success h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.9rem;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--white); margin: 0 0 0.4rem 0;
+    }
+    .piq-success p { font-size: 0.82rem; color: var(--muted); margin: 0; font-weight: 300; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.2rem; }
+      .nav-links { display: none; }
+      footer { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="nav-logo">
+      <div class="nav-logo-icon">P</div>
+      <span class="nav-logo-text">PathwayIQ</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#showcase">See It in Action</a></li>
+      <li><a href="#pricing">Free vs Pro</a></li>
+      <li><a href="#tracks">Career Tracks</a></li>
+      <li><a href="#download" class="btn-nav">Download</a></li>
+    </ul>
+  </nav>
+
+  <!-- COMING SOON BANNER -->
+  <div class="coming-soon-bar" role="banner" aria-label="App status">
+    <span class="csb-dot"></span>
+    <span class="csb-dot"></span>
+    <span class="csb-dot"></span>
+    &nbsp;Coming Soon to Google Play &nbsp;·&nbsp; Currently in Development
+    <span class="csb-dot"></span>
+    <span class="csb-dot"></span>
+    <span class="csb-dot"></span>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-eyebrow">Free on Android · by TechLearn Resources</div>
+    <div class="hero-icon"><span>P</span></div>
+    <h1>Your <span class="accent">Tech Career</span><br>Roadmap</h1>
+    <p class="hero-sub">Stop guessing what to learn next. PathwayIQ gives you a personalized, step-by-step path to your first tech role — no fluff, no overwhelm.</p>
+    <div class="hero-cta" id="download">
+      <a href="#" class="btn-primary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2"/><path d="m10 8 6 4-6 4V8z"/></svg>
+        Get it on Google Play
+      </a>
+      <a href="#showcase" class="btn-secondary">See it in action ↓</a>
+    </div>
+    <p class="hero-badge">100% free to start &nbsp;·&nbsp; <span>No account required</span></p>
+    <div class="scroll-hint">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features" id="features">
+    <p class="section-label">How it works</p>
+    <h2 class="section-title">Built for career switchers<br>and beginners</h2>
+    <p class="section-sub">Answer a few questions during onboarding and PathwayIQ maps out exactly what to learn and in what order.</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🎯</div>
+        <div class="feature-title">Personalized Onboarding</div>
+        <p class="feature-desc">Select your experience level, target career track, and learning goal. PathwayIQ builds a roadmap tailored to where you are and where you want to go.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🗺️</div>
+        <div class="feature-title">Step-by-Step Roadmap</div>
+        <p class="feature-desc">Each track breaks down into clear, sequential steps with curated free resources from YouTube, Khan Academy, freeCodeCamp, MIT OpenCourseWare, Microsoft, and more.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📈</div>
+        <div class="feature-title">Progress Tracking</div>
+        <p class="feature-desc">Check off steps as you complete them. Your progress saves locally on your device. No account needed to get started.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🏅</div>
+        <div class="feature-title">Shareable Certificates</div>
+        <p class="feature-desc">Finish a career track and earn a personalized certificate of completion with a unique ID. Ready to screenshot and share anywhere.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔗</div>
+        <div class="feature-title">Curated Free Resources</div>
+        <p class="feature-desc">Every step links to high-quality, free learning content. No paywalls or upsells. Just the best free education available online.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔒</div>
+        <div class="feature-title">Privacy First</div>
+        <p class="feature-desc">Free tier data lives entirely on your device. Nothing leaves your phone unless you choose to upgrade to Pro with optional cloud sync.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCREENSHOT SHOWCASE -->
+  <section class="showcase" id="showcase">
+    <div class="showcase-inner">
+      <p class="section-label">See it in action</p>
+      <h2 class="section-title">Real screenshots from the app</h2>
+      <p class="section-sub">No mockups! These are actual screens from PathwayIQ.</p>
+
+      <!-- Panel 1: Certificate -->
+      <div class="showcase-panels">
+        <div class="phone-frame gold-glow">
+          <img src="certificate.jpg" alt="PathwayIQ Certificate of Completion screen showing Jane Doe completing the Tech Foundations learning path" />
+        </div>
+        <div class="showcase-panel showcase-text">
+          <h3>Earn a certificate<br>when you finish</h3>
+          <p>Complete any career track and PathwayIQ generates a personalized Certificate of Completion with a unique ID, your name, track details, and the date. One tap to share it anywhere.</p>
+          <p>Before your certificate generates, PathwayIQ prompts you to enter your name so every certificate comes out personalized and ready to share. Your certificate ID is permanent proof of what you built.</p>
+          <div class="pill-list">
+            <span class="pill gold">Unique Certificate ID</span>
+            <span class="pill gold">Your name on it</span>
+            <span class="pill gold">Share in one tap</span>
+            <span class="pill">Free tier included</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Panel 2: Pro tracks -->
+      <div class="showcase-panels reverse" style="margin-top:5rem;">
+        <div class="showcase-panel showcase-text">
+          <h3>Advanced paths<br>unlock with Pro</h3>
+          <p>Free tracks cover the most popular entry-level careers. Upgrade to Pro to unlock five advanced and specialized paths including, AWS cloud engineering, Azure cloud administration, data engineering, IT security management, and program & product management.</p>
+          <p>Not sure where to start? Every user gets access to the "Not sure yet" option, which routes you to Tech Foundations automatically.</p>
+          <div class="pill-list">
+            <span class="pill highlight">AWS Cloud Engineer</span>
+            <span class="pill highlight">Azure Cloud Administrator</span>
+            <span class="pill highlight">Data Engineer</span>
+            <span class="pill highlight">Federal IT / GS-2210</span>
+            <span class="pill highlight">IT Security Manager</span>
+            <span class="pill highlight">Program & Product Manager</span>
+          </div>
+        </div>
+        <div class="phone-frame cyan-glow">
+          <img src="pro-tracks.jpg" alt="PathwayIQ career track selection screen showing Pro-locked advanced tracks including AWS Cloud Engineer, Azure Cloud Administrator, Data Engineer, and Federal IT" />
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing-section" id="pricing">
+    <p class="section-label">Free vs Pro</p>
+    <h2 class="section-title">Start free, always</h2>
+    <p class="section-sub">PathwayIQ is completely free to use. Pro unlocks advanced tracks, removes ads, and adds cloud sync.</p>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div class="pricing-tier">Free</div>
+        <div class="pricing-price"><sup></sup>$0</div>
+        <div class="pricing-cadence">Forever free</div>
+        <ul class="pricing-list">
+          <li><span class="check">✓</span> 7 free career tracks (see full list below)</li>
+          <li><span class="check">✓</span> Step-by-step roadmaps</li>
+          <li><span class="check">✓</span> Local progress tracking</li>
+          <li><span class="check">✓</span> Completion certificates</li>
+          <li><span class="check">✓</span> All curated free resources</li>
+          <li><span class="check" style="color:var(--muted)">–</span> Ad-supported</li>
+          <li><span class="check" style="color:var(--muted)">–</span> Local storage only</li>
+          <li><span class="check" style="color:var(--muted)">–</span> Pro tracks locked</li>
+        </ul>
+      </div>
+      <div class="pricing-card featured">
+        <div class="pricing-tier" style="color:var(--cyan)">Pro</div>
+        <div class="pricing-price"><sup>$</sup>2.99</div>
+        <div class="pricing-cadence">per month</div>
+        <ul class="pricing-list">
+          <li><span class="check">✓</span> Everything in Free</li>
+          <li><span class="check check-gold">✓</span> <strong style="color:var(--white)">5 Pro career tracks unlocked</strong></li>
+          <li><span class="check check-gold">✓</span> <strong style="color:var(--white)">No ads</strong></li>
+          <li><span class="check check-gold">✓</span> Cloud sync across devices</li>
+          <li><span class="check check-gold">✓</span> Secure account with Firebase Auth</li>
+          <li><span class="check check-gold">✓</span> Priority support</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRACKS -->
+  <section class="tracks-section" id="tracks">
+    <div class="tracks-inner">
+      <p class="section-label">Career Tracks</p>
+      <h2 class="section-title">Pick your path</h2>
+      <p class="section-sub">Free tracks get you started. Pro unlocks advanced and government career paths.</p>
+      <div class="tracks-grid">
+        <span class="track-pill active">Tech Foundations</span>
+        <span class="track-pill active">Data Analyst</span>
+        <span class="track-pill active">Cybersecurity Analyst</span>
+        <span class="track-pill active">IT Project Manager</span>
+        <span class="track-pill active">Software Developer</span>
+        <span class="track-pill active">Business Analyst</span>
+        <span class="track-pill active">AI / Machine Learning</span>
+        <span class="track-pill active">☁️ Cloud Computing</span>
+        <span class="track-pill pro-pill">☁️ AWS Cloud Engineer</span>
+        <span class="track-pill pro-pill">🔷 Azure Cloud Administrator</span>
+        <span class="track-pill pro-pill">🔧 Data Engineer</span>
+        <span class="track-pill pro-pill">🏛️ Federal IT / GS-2210</span>
+        <span class="track-pill pro-pill">🔐 IT Security Manager</span>
+        <span class="track-pill pro-pill">🗺️ Program & Product Manager</span>
+      </div>
+      <p class="tracks-note"><strong>🔒 Pro tracks</strong> unlock advanced and government career paths</p>
+    </div>
+  </section>
+
+  <!-- CTA STRIP -->
+  <div class="cta-strip">
+    <h2>Ready to map your<br><span style="color:var(--cyan)">tech career?</span></h2>
+    <p>Join learners using PathwayIQ to get focused, stop guessing, and start building real skills. Free on Android!</p>
+    <a href="#" class="btn-primary">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2"/><path d="m10 8 6 4-6 4V8z"/></svg>
+      Download Free on Google Play
+    </a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>
+      <strong style="color:var(--white)">PathwayIQ</strong> &nbsp;·&nbsp; by
+      <a href="https://techlearnresources.com" target="_blank" rel="noopener">TechLearn Resources</a>
+      &nbsp;/&nbsp; <a href="https://knightdevonline.com/" target="_blank" rel="noopener">Knight Development</a>
+    </div>
+    <div class="footer-links">
+      <a href="/privacy">Privacy Policy</a>
+      <button id="piqContactTrigger" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:0.82rem;font-family:inherit;padding:0;transition:color 0.2s;" onmouseover="this.style.color='var(--cyan)'" onmouseout="this.style.color='var(--muted)'">Contact</button>
+      <a href="https://techlearnresources.com" target="_blank" rel="noopener">TechLearn Resources</a>
+    </div>
+  </footer>
+
+
+  <!-- HIDDEN NETLIFY FORM -->
+  <form name="pathwayiq-contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
+    <input type="hidden" name="form-name" value="pathwayiq-contact" />
+    <input name="bot-field" />
+    <input name="type" />
+    <input name="details" />
+    <input name="email" />
+  </form>
+
+  <!-- CONTACT MODAL -->
+  <div class="piq-contact-overlay" id="piqContactOverlay">
+    <div class="piq-contact-modal" role="dialog" aria-modal="true" aria-labelledby="piqContactTitle">
+      <button class="piq-modal-close" id="piqContactClose" aria-label="Close">&times;</button>
+      <div id="piqFormWrap">
+        <h2 id="piqContactTitle">Get in Touch</h2>
+        <p>Questions, feedback, or early access interest? We'd love to hear from you.</p>
+        <form name="pathwayiq-contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="piqContactForm">
+          <input type="hidden" name="form-name" value="pathwayiq-contact" />
+          <p style="display:none;"><input name="bot-field" /></p>
+          <div class="piq-form-group">
+            <label for="piqType">I want to...</label>
+            <select name="type" id="piqType" required>
+              <option value="" disabled selected>Select one...</option>
+              <option value="early-access">Request early access</option>
+              <option value="early-access">Suggest a learning path</option>
+              <option value="feedback">Share feedback</option>
+              <option value="question">Ask a question</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="piq-form-group">
+            <label for="piqDetails">Message</label>
+            <textarea name="details" id="piqDetails" placeholder="Tell us more..." required></textarea>
+          </div>
+          <div class="piq-form-group">
+            <label for="piqEmail">Your email</label>
+            <input type="email" name="email" id="piqEmail" placeholder="you@example.com" />
+          </div>
+          <button type="submit" class="piq-submit">Send Message</button>
+        </form>
+      </div>
+      <div class="piq-success" id="piqSuccess">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5"/>
+        </svg>
+        <h3>Message Sent!</h3>
+        <p>Thanks for reaching out. We'll be in touch soon.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Contact modal
+    const piqOverlay  = document.getElementById('piqContactOverlay');
+    const piqTrigger  = document.getElementById('piqContactTrigger');
+    const piqClose    = document.getElementById('piqContactClose');
+    const piqForm     = document.getElementById('piqContactForm');
+    const piqFormWrap = document.getElementById('piqFormWrap');
+    const piqSuccess  = document.getElementById('piqSuccess');
+
+    piqTrigger.addEventListener('click', () => piqOverlay.classList.add('open'));
+    piqClose.addEventListener('click',   () => piqOverlay.classList.remove('open'));
+    piqOverlay.addEventListener('click', (e) => { if (e.target === piqOverlay) piqOverlay.classList.remove('open'); });
+
+    piqForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = piqForm.querySelector('.piq-submit');
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+      try {
+        const data = new FormData(piqForm);
+        await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(data).toString() });
+        piqFormWrap.style.display = 'none';
+        piqSuccess.style.display = 'block';
+        setTimeout(() => {
+          piqOverlay.classList.remove('open');
+          setTimeout(() => { piqFormWrap.style.display = ''; piqSuccess.style.display = 'none'; btn.textContent = 'Send Message'; btn.disabled = false; piqForm.reset(); }, 300);
+        }, 2500);
+      } catch(err) {
+        btn.textContent = 'Send Message';
+        btn.disabled = false;
+        alert('Something went wrong. Please try again.');
+      }
+    });
+  </script>
+
+  <!-- Back to top button -->
+  <button id="backToTop" aria-label="Back to top" style="
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--cyan);
+    color: var(--bg);
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(45,212,240,0.3);
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    z-index: 999;
+    pointer-events: none;
+  ">↑</button>
+
+  <script>
+    const btt = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      const show = window.scrollY > 400;
+      btt.style.opacity = show ? '1' : '0';
+      btt.style.transform = show ? 'translateY(0)' : 'translateY(12px)';
+      btt.style.pointerEvents = show ? 'auto' : 'none';
+    });
+    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  </script>
+
+</body>
+</html>
