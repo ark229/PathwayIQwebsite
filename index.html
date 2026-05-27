@@ -49,7 +49,7 @@
     .coming-soon-bar {
       position: fixed;
       top: 0; left: 0; right: 0;
-      z-index: 200;
+      z-index: 400;
       background: linear-gradient(90deg, #f59e0b 0%, #fbbf24 50%, #f59e0b 100%);
       background-size: 200% 100%;
       animation: shimmer 3s linear infinite;
@@ -92,6 +92,9 @@
       background: rgba(13,17,23,0.88);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border);
+    }
+    @media (max-width: 768px) {
+      nav { top: var(--banner-h, 56px); }
     }
     .nav-logo { display: flex; align-items: center; gap: 0.65rem; text-decoration: none; }
     .nav-logo-icon {
@@ -867,6 +870,16 @@
         drawer.classList.remove('open');
       });
     });
+
+    // Set nav top based on actual banner height (handles wrapping on mobile)
+    function setBannerHeight() {
+      const bar = document.querySelector('.coming-soon-bar');
+      if (bar) {
+        document.documentElement.style.setProperty('--banner-h', bar.offsetHeight + 'px');
+      }
+    }
+    setBannerHeight();
+    window.addEventListener('resize', setBannerHeight);
   </script>
 
 </body>
