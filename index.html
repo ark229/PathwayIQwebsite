@@ -433,8 +433,67 @@
 
     @media (max-width: 768px) {
       nav { padding: 1rem 1.2rem; }
-      .nav-links { display: none; }
       footer { flex-direction: column; align-items: flex-start; }
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+    }
+
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      z-index: 201;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .nav-mobile-drawer {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      padding: 5rem 1.5rem 1.5rem;
+      z-index: 200;
+      flex-direction: column;
+      gap: 0;
+      animation: fadeUp 0.2s ease;
+    }
+    .nav-mobile-drawer.open { display: flex; }
+    .nav-mobile-drawer a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid var(--border);
+      transition: color 0.2s;
+    }
+    .nav-mobile-drawer a:last-child { border-bottom: none; }
+    .nav-mobile-drawer a:hover { color: var(--white); }
+    .nav-mobile-drawer .btn-nav-mobile {
+      margin-top: 1rem;
+      background: var(--cyan);
+      color: var(--bg);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      font-weight: 700;
+      text-align: center;
+      border-bottom: none;
     }
   </style>
 </head>
@@ -454,7 +513,19 @@
       <li><a href="#tracks">Career Tracks</a></li>
       <li><a href="#download" class="btn-nav">Download</a></li>
     </ul>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
+
+  <!-- MOBILE NAV DRAWER -->
+  <div class="nav-mobile-drawer" id="navDrawer">
+    <a href="#features" class="nav-drawer-link">Features</a>
+    <a href="#showcase" class="nav-drawer-link">See It in Action</a>
+    <a href="#pricing" class="nav-drawer-link">Free vs Pro</a>
+    <a href="#tracks" class="nav-drawer-link">Career Tracks</a>
+    <a href="#download" class="btn-nav-mobile">Download</a>
+  </div>
 
   <!-- COMING SOON BANNER -->
   <div class="coming-soon-bar" role="banner" aria-label="App status">
@@ -780,6 +851,22 @@
       btt.style.pointerEvents = show ? 'auto' : 'none';
     });
     btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  </script>
+  <script>
+    // Hamburger menu
+    const hamburger = document.getElementById('navHamburger');
+    const drawer = document.getElementById('navDrawer');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      drawer.classList.toggle('open');
+    });
+    // Close drawer when a link is clicked
+    drawer.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        drawer.classList.remove('open');
+      });
+    });
   </script>
 
 </body>
