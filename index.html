@@ -467,10 +467,10 @@
     .nav-mobile-drawer {
       display: none;
       position: fixed;
-      top: 0; left: 0; right: 0;
+      top: var(--banner-h, 56px); left: 0; right: 0;
       background: var(--card);
       border-bottom: 1px solid var(--border);
-      padding: 5rem 1.5rem 1.5rem;
+      padding: 3.5rem 1.5rem 1.5rem;
       z-index: 301;
       flex-direction: column;
       gap: 0;
@@ -525,7 +525,7 @@
   <div class="nav-mobile-drawer" id="navDrawer">
     <button id="navDrawerClose" aria-label="Close menu" style="
       position: absolute;
-      top: 1rem; right: 1.2rem;
+      top: 0.75rem; right: 1.2rem;
       background: none;
       border: 1px solid var(--border);
       color: var(--white);
