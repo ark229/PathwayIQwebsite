@@ -523,6 +523,20 @@
 
   <!-- MOBILE NAV DRAWER -->
   <div class="nav-mobile-drawer" id="navDrawer">
+    <button id="navDrawerClose" aria-label="Close menu" style="
+      position: absolute;
+      top: 1rem; right: 1.2rem;
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--white);
+      font-size: 1.3rem;
+      line-height: 1;
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: border-color 0.2s, color 0.2s;
+    ">&times;</button>
     <a href="#features" class="nav-drawer-link">Features</a>
     <a href="#showcase" class="nav-drawer-link">See It in Action</a>
     <a href="#pricing" class="nav-drawer-link">Free vs Pro</a>
@@ -859,17 +873,16 @@
     // Hamburger menu
     const hamburger = document.getElementById('navHamburger');
     const drawer = document.getElementById('navDrawer');
+    const drawerClose = document.getElementById('navDrawerClose');
+
+    const closeDrawer = () => { hamburger.classList.remove('open'); drawer.classList.remove('open'); };
+
     hamburger.addEventListener('click', () => {
       hamburger.classList.toggle('open');
       drawer.classList.toggle('open');
     });
-    // Close drawer when a link is clicked
-    drawer.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('open');
-        drawer.classList.remove('open');
-      });
-    });
+    drawerClose.addEventListener('click', closeDrawer);
+    drawer.querySelectorAll('a').forEach(link => link.addEventListener('click', closeDrawer));
 
     // Set nav top based on actual banner height (handles wrapping on mobile)
     function setBannerHeight() {
